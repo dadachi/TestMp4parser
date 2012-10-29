@@ -1,5 +1,7 @@
 package org.bestforce.testmp4parser;
 
+import android.content.Context;
+
 import com.coremedia.iso.IsoFile;
 import com.coremedia.iso.boxes.TimeToSampleBox;
 import com.googlecode.mp4parser.authoring.Movie;
@@ -24,10 +26,15 @@ import java.util.List;
  */
 public class ShortenExample {
 
+    private final Context mCxt;
 
-    public static void main(String[] args) throws IOException {
-        //Movie movie = new MovieCreator().build(new RandomAccessFile("/home/sannies/suckerpunch-distantplanet_h1080p/suckerpunch-distantplanet_h1080p.mov", "r").getChannel());
-        ReadableByteChannel in = Channels.newChannel((new FileInputStream("/home/sannies/Downloads/Arquivo/video.MOV")));
+    public ShortenExample(Context context) {
+        mCxt = context;
+    }
+
+    public  void shorten() throws IOException {
+        //Movie movie = new MovieCreator().build(new RandomAccessFile("/home/sannies/suckerpunch-distantplanet_h1080p/suckerpunch-distantplanet_h1080p.mp4", "r").getChannel());
+        ReadableByteChannel in = Channels.newChannel((new FileInputStream("/home/sannies/Downloads/Arquivo/video.mp4")));
         Movie movie = MovieCreator.build(in);
 
         List<Track> tracks = movie.getTracks();

@@ -4,5 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-
+	<string name="message_error">Error: </string>
+ 	<string name="message_appended">The appended file is exported to </string>
+ 	<string name="message_shortened">The shortened file is exported to </string>
+ 		
+	
 </resources>
