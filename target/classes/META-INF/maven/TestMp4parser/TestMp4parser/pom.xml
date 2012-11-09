@@ -7,6 +7,14 @@
   <name>Your Android project Maven Enabled</name>
 
   <dependencies>
+<!--
+	<dependency>
+        <groupId>android</groupId>
+        <artifactId>android</artifactId>
+        <version>4.1.1.4</version>
+       <scope>provided</scope>
+    </dependency>
+ -->
 	<dependency>
 	  <groupId>com.googlecode.mp4parser</groupId> 
 	  <artifactId>isoparser</artifactId> 
