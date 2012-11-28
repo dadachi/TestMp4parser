@@ -1,5 +1,6 @@
 package org.bestforce.testmp4parser;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.os.Handler;
@@ -44,6 +45,7 @@ public class AppendExample {
     private final Context mCxt;
     private ExecutorService mThreadExecutor = null;
 	private SimpleInvalidationHandler mHandler;
+	private ProgressDialog mProgressDialog;
 
 	private class SimpleInvalidationHandler extends Handler {
 
@@ -58,6 +60,7 @@ public class AppendExample {
 
 				break;
 			case R.id.append:
+				mProgressDialog.dismiss();
 
 				if (msg.arg1 == 0)
 					Toast.makeText(mCxt,
@@ -82,7 +85,9 @@ public class AppendExample {
     }
 
 	private void doAppend() {
-		if(mThreadExecutor == null)
+    	mProgressDialog = Ut.ShowWaitDialog(mCxt, 0);
+
+    	if(mThreadExecutor == null)
 			mThreadExecutor = Executors.newSingleThreadExecutor(new SimpleThreadFactory("DoAppend"));
 
 		this.mThreadExecutor.execute(new Runnable() {

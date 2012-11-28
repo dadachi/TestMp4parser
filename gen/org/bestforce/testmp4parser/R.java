@@ -44,6 +44,7 @@ public final class R {
         public static final int message_appended=0x7f060005;
         public static final int message_error=0x7f060004;
         public static final int message_shortened=0x7f060006;
+        public static final int message_wait=0x7f060007;
         public static final int title_activity_main=0x7f060003;
     }
     public static final class style {

@@ -1,5 +1,6 @@
 package org.bestforce.testmp4parser;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -43,6 +44,7 @@ public class ShortenExample {
     private final Context mCxt;
     private ExecutorService mThreadExecutor = null;
 	private SimpleInvalidationHandler mHandler;
+	private ProgressDialog mProgressDialog;
 
 	private class SimpleInvalidationHandler extends Handler {
 
@@ -50,6 +52,7 @@ public class ShortenExample {
 		public void handleMessage(final Message msg) {
 			switch (msg.what) {
 			case R.id.shorten:
+				mProgressDialog.dismiss();
 
 				if (msg.arg1 == 0)
 					Toast.makeText(mCxt,
@@ -66,14 +69,15 @@ public class ShortenExample {
 	
     public ShortenExample(Context context) {
         mCxt = context;
+        mHandler = new SimpleInvalidationHandler();
     }
-
 
     public void shorten() {
     	doShorten();
     }
 
     private void doShorten() {
+    	mProgressDialog = Ut.ShowWaitDialog(mCxt, 0);
         
 		if(mThreadExecutor == null)
 			mThreadExecutor = Executors.newSingleThreadExecutor(new SimpleThreadFactory("doShorten"));
@@ -164,12 +168,12 @@ public class ShortenExample {
 			        System.err.println("Writing IsoFile took  : " + (start3 - start2) + "ms");
 			        System.err.println("Writing IsoFile speed : " + (new File(String.format("TMP4_APP_OUT-%f-%f", startTime, endTime)).length() / (start3 - start2) / 1000) + "MB/s");
 
-					Message.obtain(mHandler, R.id.append, 1, 0, filename).sendToTarget();
+					Message.obtain(mHandler, R.id.shorten, 1, 0, filename).sendToTarget();
 				} catch (FileNotFoundException e) {
-					Message.obtain(mHandler, R.id.append, 0, 0, e.getMessage()).sendToTarget();
+					Message.obtain(mHandler, R.id.shorten, 0, 0, e.getMessage()).sendToTarget();
 					e.printStackTrace();
 				} catch (IOException e) {
-					Message.obtain(mHandler, R.id.append, 0, 0, e.getMessage()).sendToTarget();
+					Message.obtain(mHandler, R.id.shorten, 0, 0, e.getMessage()).sendToTarget();
 					e.printStackTrace();
 				}
 

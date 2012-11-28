@@ -7,6 +7,6 @@
 	<string name="message_error">Error: </string>
  	<string name="message_appended">The appended file is exported to </string>
  	<string name="message_shortened">The shortened file is exported to </string>
- 		
+	<string name="message_wait">Wait a moment, please&#8230;</string>
 	
 </resources>
