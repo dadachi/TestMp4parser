@@ -1,3 +1,3 @@
-This is Android test application of [mp4parser](http://code.google.com/p/mp4parser/).
+This is Android sample application of [mp4parser](http://mp4parser.googlecode.com/)'s [AppendExample](https://code.google.com/p/mp4parser/source/browse/trunk/examples/src/main/java/com/googlecode/mp4parser/AppendExample.java) and [ShortenExample](https://mp4parser.googlecode.com/svn/trunk/examples/src/main/java/com/googlecode/mp4parser/ShortenExample.java).
 
 Before pushing "AppendExample" button, copy /res/raw/sample1-2.mp4 to /sdcard/TestMp4Parser/Videos folder of device.
